@@ -1,103 +1,42 @@
 # Reekhav Engineers
 
-> Precision engineering software for high-voltage overhead transmission line design, conductor sag-tension analysis, and tower clearance verification.
+Precision engineering solutions and specialized software for electrical utility infrastructure, power transmission design, and structural clearance analysis.
 
 ---
 
 ## About Reekhav Engineers
 
-**Reekhav Engineers** builds next-generation utility and electrical grid engineering platforms. Our flagship product, **LineDesign Studio**, is an enterprise-grade cloud system that transforms complex transmission line design workflows—from catenary curve physics and environmental wind loading to statutory clearance spotting—into an interactive, high-precision web interface.
+Reekhav Engineers develops mission-critical calculation engines and modern engineering applications for the energy and power transmission sectors. We modernize complex engineering workflows by replacing error-prone manual spreadsheets with high-precision, cloud-native platforms.
 
 ---
 
-## System Architecture
+## Active Focus & Projects
 
-```text
-+-----------------------------------------------------------------------------------+
-|                                Client & Edge Layer                                |
-|                                                                                   |
-|   Production Frontend: designer.reekhav.com (Cloudflare Worker: designer-frontend) |
-|   UAT Frontend:        uat.designer.reekhav.com (Worker: designer-frontend-uat)   |
-|   Security Gateway:    Cloudflare Turnstile Bot Defense                           |
-+-----------------------------------------------------------------------------------+
-                                          |
-                                          v
-+-----------------------------------------------------------------------------------+
-|                               Application Services                                |
-|                                                                                   |
-|   - Authentication & RBAC Service (JWT, Microsoft Graph API, Impersonation)       |
-|   - Sag-Tension Calculation Engine (IS 802 / IEC Catenary Physics)                |
-|   - Multi-Sheet State & Provenance Engine (Interactive Excel-grade Workbook)      |
-|   - Wire & Conductor Catalog Service (Master library & custom project wires)      |
-|   - Project Delegation & Review Audit Logging                                     |
-+-----------------------------------------------------------------------------------+
-                                          |
-                                          v
-+-----------------------------------------------------------------------------------+
-|                               Storage Infrastructure                              |
-|                                                                                   |
-|   Production: Azure Cosmos DB / DocumentDB vCore (30 GB Cluster)                  |
-|   UAT:        MongoDB Atlas QA Cluster (designer_projects_qa)                      |
-+-----------------------------------------------------------------------------------+
-```
+Our engineering team is actively developing and refining specialized systems across key transmission engineering domains:
+
+### 1. Overhead Transmission Line Sag & Tension Analysis
+- High-precision catenary physics modeling across diverse operational and extreme thermal regimes.
+- Automated cubic state-change equation solvers for conductor tension and sag calculations.
+- Ruling span evaluations, stringing charts, and Tension-Sag-Distance (TSD) tables for field construction.
+
+### 2. Environmental Load & Meteorological Modeling
+- Dynamic wind pressure and transverse loading formulations conforming to national and international standards (IS 802, IEC).
+- Coupled mechanical loading simulations under simultaneous wind, ice, and thermal variations.
+- Topographic terrain classifications, gust factor calibrations, and reliability return periods.
+
+### 3. Statutory Clearance Verification & Tower Spotting
+- Automated ground clearance and obstacle profile spotting along transmission line alignments.
+- Vertical, horizontal, and phase-to-phase electrical flashover clearance envelope verifications.
+- Mid-span sag profiling to ensure compliance with utility and statutory safety regulations.
+
+### 4. Collaborative Engineering Workspaces
+- Interactive, multi-sheet calculation workbooks built specifically for electrical and civil transmission designers.
+- Granular review workflows, calculation audit trails, and multi-disciplinary project delegation.
 
 ---
 
-## Live Environments & Infrastructure
+## Engineering Philosophy
 
-### 1. Production Environment
-
-| Component | Identifier / URL | Details |
-| :--- | :--- | :--- |
-| **Frontend Application** | [designer.reekhav.com](https://designer.reekhav.com) | Cloudflare Worker (`designer-frontend`) delivering React 18 / TypeScript single-page application. |
-| **Backend API Gateway** | [backend.designer.reekhav.com](https://backend.designer.reekhav.com) | Azure Linux App Service (`designer`), hosted in India South Central. |
-| **Direct Azure Endpoint**| [designer-accwhadabggmd2cj...azurewebsites.net](https://designer-accwhadabggmd2cj.indiasouthcentral-01.azurewebsites.net) | Direct HTTPS host for backend service operations. |
-| **API Documentation** | [/api-docs](https://designer-accwhadabggmd2cj.indiasouthcentral-01.azurewebsites.net/api-docs) | Interactive OpenAPI 3.0 (Swagger UI) documentation. |
-| **API Specification** | [/apispec.json](https://designer-accwhadabggmd2cj.indiasouthcentral-01.azurewebsites.net/apispec.json) | Raw OpenAPI 3.0 JSON specification. |
-| **Database Cluster** | Azure Cosmos DB (DocumentDB vCore) | `designer-mongodb.mongocluster.cosmos.azure.com` (30 GB storage tier, database `designer_projects`). |
-
-### 2. User Acceptance Testing (UAT) Environment
-
-| Component | Identifier / URL | Details |
-| :--- | :--- | :--- |
-| **UAT Frontend** | [uat.designer.reekhav.com](https://uat.designer.reekhav.com) | Cloudflare Worker (`designer-frontend-uat`) isolated for staging validation. |
-| **UAT Backend API** | [designer-backend-node-uat...azurewebsites.net](https://designer-backend-node-uat-dzh0auf8ercffkbv.westus3-01.azurewebsites.net) | Azure Linux App Service (`designer-backend-node-uat`), hosted in West US 3. |
-| **UAT API Documentation** | [/api-docs](https://designer-backend-node-uat-dzh0auf8ercffkbv.westus3-01.azurewebsites.net/api-docs) | Live staging OpenAPI 3.0 documentation. |
-| **UAT Database** | MongoDB Atlas QA Cluster | Isolated staging cluster with database `designer_projects_qa`. |
-
----
-
-## Repositories
-
-| Repository | Scope | Stack |
-| :--- | :--- | :--- |
-| [`designer-frontend`](https://github.com/ReekhavEngineers/designer-frontend) | Single-page spreadsheet interface & engineering HUD | React 18, TypeScript, Redux Toolkit, Vite, Cloudflare Workers |
-| [`designer-backend-node`](https://github.com/ReekhavEngineers/designer-backend-node) | REST API calculation engine & data governance | Node.js, Express, TypeScript, Azure Cosmos DB, OpenAPI 3.0 |
-| [`.github`](https://github.com/ReekhavEngineers/.github) | Organization profile, community health, and workflows | Markdown, GitHub Actions |
-
----
-
-## Core Capabilities
-
-1. **Sag-Tension Physics Engine**:
-   - High-precision calculation of conductor catenary curves across operational temperatures (0°C to 85°C).
-   - Ruling span state-change cubic equation solving for tension and sag.
-   - Tension-Sag-Distance (TSD) tables for field erection and stringing charts.
-2. **Environmental & Wind Loading (IS 802 / IEC)**:
-   - Dynamic wind pressure and resultant unit weight derivations under combined wind and ice loading.
-   - Terrain categories, gust factors, and reliability return periods.
-3. **Tower Height & Ground Clearance Verification**:
-   - Automated mid-span ground clearance checks against statutory codes.
-   - Obstacle elevation profiling and vertical clearance spotting.
-4. **Enterprise Multi-Project Collaboration**:
-   - Role-Based Access Control (RBAC): Administrators, Line Managers, Design Engineers.
-   - Review workflow lifecycle: Draft &rarr; Submitted &rarr; Approved / Modification Requested.
-   - Full audit logging and administrator session impersonation.
-
----
-
-## Engineering Standards
-
-- **Strict TypeScript**: 100% typed with zero `any` usage, discriminated unions, and Zod boundary validation.
-- **Single Source of Truth**: Backend handles 100% of physical and engineering formulas; computed values are returned directly on save.
-- **Security & Bot Defense**: Universal Cloudflare Turnstile token validation and strict CORS origin enforcement.
+- **Mathematical Integrity**: 100% deterministic physical equations with strict mathematical verification.
+- **Enterprise Standards**: Single-source-of-truth architectures, strict type safety, and zero unverified assumptions.
+- **Utility-Ready**: Designed from the ground up to meet stringent utility compliance and statutory reporting requirements.
